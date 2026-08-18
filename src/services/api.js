@@ -51,6 +51,14 @@ export const portfolioApi = {
   updateExperience: (id, data) => api.put(`/admin/experience/${id}`, data),
   deleteExperience: (id) => api.delete(`/admin/experience/${id}`),
 
+  createEducation: (data) => api.post('/admin/education', data),
+  updateEducation: (id, data) => api.put(`/admin/education/${id}`, data),
+  deleteEducation: (id) => api.delete(`/admin/education/${id}`),
+
+  createCertificate: (data) => api.post('/admin/certificates', data),
+  updateCertificate: (id, data) => api.put(`/admin/certificates/${id}`, data),
+  deleteCertificate: (id) => api.delete(`/admin/certificates/${id}`),
+
   getAllMessages: () => api.get('/admin/messages'),
   markMessageRead: (id) => api.put(`/admin/messages/${id}/read`),
   deleteMessage: (id) => api.delete(`/admin/messages/${id}`),
