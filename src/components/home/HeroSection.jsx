@@ -49,8 +49,10 @@ export const HeroSection = ({ profile }) => {
               </a>
 
               <a
-                href={profile?.resumeUrl || "#"}
-                download
+                href={profile?.resumeUrl || "/assets/Sandeep_Singh_Resume.pdf"}
+                download="Sandeep_Singh_Resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-6 py-3.5 rounded-btn glass-card text-slate-200 hover:text-white font-semibold text-xs flex items-center gap-2 border border-white/10"
               >
                 <Download size={16} /> Download Resume

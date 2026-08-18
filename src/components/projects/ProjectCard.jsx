@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github, ArrowRight, Sparkles } from 'lucide-react';
+import { getProjectImage } from '../../utils/projectImages';
 
 export const ProjectCard = ({ project, onSelectProject, isFeatured = false }) => {
   const techList = project.techStack
@@ -7,6 +8,8 @@ export const ProjectCard = ({ project, onSelectProject, isFeatured = false }) =>
         ? JSON.parse(project.techStack)
         : project.techStack.split(','))
     : [];
+
+  const imageUrl = getProjectImage(project);
 
   return (
     <div
@@ -18,13 +21,13 @@ export const ProjectCard = ({ project, onSelectProject, isFeatured = false }) =>
     >
       <div className={`grid grid-cols-1 ${isFeatured ? 'lg:grid-cols-12' : ''} gap-0 h-full`}>
         {/* Thumbnail Image Box */}
-        <div className={`relative overflow-hidden bg-[#0B0C0E] ${isFeatured ? 'lg:col-span-7 h-64 lg:h-full' : 'h-52'}`}>
+        <div className={`relative overflow-hidden bg-[#0B0C0E] ${isFeatured ? 'lg:col-span-7 h-64 lg:h-[340px]' : 'h-56'}`}>
           <img
-            src={project.imageUrl || "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop"}
+            src={imageUrl}
             alt={project.title}
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#0B0C0E] via-[#0B0C0E]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0B0C0E] via-transparent to-black/20" />
 
           {/* Status Badge */}
           <div className="absolute top-4 left-4 flex flex-wrap gap-2">

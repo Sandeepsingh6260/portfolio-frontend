@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, ExternalLink, Github, CheckCircle2, Layers, Code2 } from 'lucide-react';
+import { getProjectImage } from '../../utils/projectImages';
 
 export const ProjectDetailModal = ({ project, onClose }) => {
   if (!project) return null;
@@ -15,6 +16,8 @@ export const ProjectDetailModal = ({ project, onClose }) => {
         ? JSON.parse(project.features)
         : project.features.split('\n'))
     : [];
+
+  const imageUrl = getProjectImage(project);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-md">
@@ -49,15 +52,13 @@ export const ProjectDetailModal = ({ project, onClose }) => {
           </div>
 
           {/* Project Image Display */}
-          {project.imageUrl && (
-            <div className="w-full h-64 sm:h-80 rounded-xl overflow-hidden border border-white/10 bg-[#0B0C0E]">
-              <img
-                src={project.imageUrl}
-                alt={project.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          )}
+          <div className="w-full h-64 sm:h-80 rounded-xl overflow-hidden border border-white/10 bg-[#0B0C0E]">
+            <img
+              src={imageUrl}
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
 
           {/* Tech Stack List */}
           <div className="space-y-2">

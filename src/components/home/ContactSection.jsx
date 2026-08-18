@@ -21,19 +21,21 @@ export const ContactSection = ({ profile }) => {
 
     try {
       const res = await portfolioApi.sendContact(formData);
-      if (res.data.success) {
+      if (res.data && (res.data.success || res.status === 200)) {
         setStatus({
           loading: false,
-          success: 'Thank you! Your message has been sent successfully. I will get back to you soon.',
+          success: res.data.message || 'Thank you! Your message has been sent successfully. I will get back to you soon.',
           error: null
         });
         setFormData({ name: '', email: '', subject: '', message: '' });
       }
     } catch (err) {
+      console.error("Failed to send contact message:", err);
+      const errorDetails = err.response?.data?.details?.join(' | ') || err.response?.data?.message || err.message || 'Failed to send message. Please ensure backend is running.';
       setStatus({
         loading: false,
         success: null,
-        error: err.response?.data?.message || 'Failed to send message. Please check input fields.'
+        error: errorDetails
       });
     }
   };
@@ -179,6 +181,7 @@ export const ContactSection = ({ profile }) => {
                 <textarea
                   name="message"
                   required
+                  minLength={5}
                   rows={4}
                   value={formData.message}
                   onChange={handleChange}

@@ -59,8 +59,10 @@ export const Navbar = ({ onOpenAdminLogin, resumeUrl }) => {
           {/* Action CTAs */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href={resumeUrl || "#"}
-              download
+              href={resumeUrl || "/assets/Sandeep_Singh_Resume.pdf"}
+              download="Sandeep_Singh_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2 text-xs font-semibold text-white bg-orange-500 hover:bg-orange-400 rounded-btn shadow-lg shadow-orange-500/20 transition-all hover:scale-[1.02] flex items-center gap-1.5"
             >
               <Download size={14} /> Resume
@@ -118,8 +120,10 @@ export const Navbar = ({ onOpenAdminLogin, resumeUrl }) => {
           ))}
           <div className="pt-2 flex flex-col gap-2">
             <a
-              href={resumeUrl || "#"}
-              download
+              href={resumeUrl || "/assets/Sandeep_Singh_Resume.pdf"}
+              download="Sandeep_Singh_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
               className="w-full text-center py-2.5 text-xs font-semibold text-white bg-orange-500 rounded-btn flex items-center justify-center gap-1.5"
             >
